@@ -20,13 +20,8 @@ namespace Playlist
         
 
         private void hacerBusqueda_Click(object sender, EventArgs e)
-        {
-           
+        {           
             string data = busqueda.Text;
-
-
-
-
             busqueda.Text = "";
         }
     }

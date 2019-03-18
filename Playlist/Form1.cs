@@ -14,12 +14,32 @@ namespace Playlist
 {
     public partial class Form1 : Form
     {
-        string [] listCanciones = new string [16];
+        List<string> listaa = new List<string>();//Lista
+
+        string [] listCanciones = new string [16];//Arreglo
         string[] infoData = new string[8];
         WindowsMediaPlayer wplayer = new WindowsMediaPlayer();
         int contador = 0;
         public void ListCanciones()
-        {        
+        {
+
+            listaa.Add("Tu sin mi");
+            listaa.Add("03:25");
+            listaa.Add("Pumped up");
+            listaa.Add("02:48");
+            listaa.Add("We are young");
+            listaa.Add("03:52");
+            listaa.Add("Lost");
+            listaa.Add("04:14");
+            listaa.Add("Asi fue");
+            listaa.Add("02:28");
+            listaa.Add("Ghetto music");
+            listaa.Add("04:58");
+            listaa.Add("Te amo");
+            listaa.Add("01:55");
+            listaa.Add("Fue en un cafe");
+            listaa.Add("02:37");
+         /*
             //Canciones
             listCanciones[0] = "Tu sin mi";
             listCanciones[2] = "Pumped up";
@@ -38,6 +58,7 @@ namespace Playlist
             listCanciones[11] = "04:58";
             listCanciones[13] = "01:55";
             listCanciones[15] = "02:37";
+         */
         }
         public Form1()
         {
@@ -52,7 +73,7 @@ namespace Playlist
         public void cargarCanciones()
         {
             ListCanciones();
-            foreach (string cancion in listCanciones)
+            foreach (string cancion in listaa)
             {
                 Canciones.Items.Add(cancion);                                                              
             }          
@@ -88,12 +109,15 @@ namespace Playlist
             Inicio.Enabled = false;
             Anterior.Enabled = false;
             Siguiente.Enabled = true;
+            Fin.Enabled = true;
             contador = 0;
 
         }
 
         public void cancionAnterior()
         {
+            Fin.Enabled = true;
+            Siguiente.Enabled = true;
             Canciones.SelectedIndex = contador - 2;
             contador = contador - 2;
             metadatos();
@@ -127,6 +151,7 @@ namespace Playlist
         {
             Canciones.SelectedIndex = Canciones.Items.Count - 2;
             metadatos();
+            Fin.Enabled = false;
             Siguiente.Enabled = false;
             Inicio.Enabled = true;
             Anterior.Enabled = true;
